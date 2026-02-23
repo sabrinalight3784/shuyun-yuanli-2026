@@ -1,0 +1,35 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Memory files (personal)
+memory/
+MEMORY.md
+AGENTS.md
+IDENTITY.md
+USER.md
+SOUL.md
+TOOLS.md
+BOOTSTRAP.md
+HEARTBEAT.md
+
+# Skills directory
+skills/
+
+# Build files
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
+# Backup files
+数云原力2026-前期思考框架4.html
