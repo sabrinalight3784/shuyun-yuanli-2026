@@ -3,123 +3,303 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Factory专题 - 数云原力2026</title>
+  <title>AI Factory 2.0 | 数云原力2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #0066FF;
-      --secondary: #00F2FE;
-      --dark-bg: #0A0E17;
-      --card-bg: rgba(255, 255, 255, 0.05);
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
     body {
-      background-color: var(--dark-bg);
-      color: #E2E8F0;
-      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: 'Inter', sans-serif;
+      background-color: #020617; /* slate-950 */
+      margin: 0;
       overflow-x: hidden;
     }
-    .gradient-text {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-glow {
-      position: absolute;
-      top: -10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      height: 600px;
-      background: radial-gradient(circle at center, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
-      z-index: -1;
-    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #020617; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    
+    /* Glass effect */
     .glass-card {
-      background: var(--card-bg);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
     }
     .glass-card:hover {
-      border-color: var(--primary);
+      border-color: #0066FF;
       transform: translateY(-5px);
     }
-    .nav-blur {
-      background: rgba(10, 14, 23, 0.8);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      height: 4.8rem;
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #0066FF, #00F2FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   </style>
 </head>
 <body class="antialiased">
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 nav-blur">
-    <div class="container mx-auto px-6 py-1.5 flex justify-between items-start">
-      <!-- 左侧：导航链接 -->
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-        <a href="index.html" class="hover:text-white transition">首页</a>
-        <a href="aicando.html" class="hover:text-blue-400 transition">AI大赛专题</a>
-        <a href="aifactory.html" class="hover:text-white transition font-bold text-white">AI Factory专题</a>
-        <a href="events.html" class="hover:text-blue-400 transition">系列活动</a>
-      </div>
-      
-      <!-- 右侧：LOGO -->
+  <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800 px-6 py-1.5">
+    <div class="max-w-7xl mx-auto flex justify-between items-start">
+      <a href="index.html" class="text-sm text-slate-400 hover:text-white transition">← 返回首页</a>
       <div class="relative w-60 h-60 flex items-start justify-center">
         <img src="logo.png" alt="Logo" class="w-full h-auto">
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="relative pt-40 pb-20 px-6 text-center">
-    <div class="hero-glow"></div>
-    <div class="container mx-auto">
-      <div class="inline-block px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-sm font-bold mb-6">
-        数云原力2026·核心板块
-      </div>
-      <h1 class="text-5xl md:text-8xl font-extrabold mb-6 tracking-tight">
-        <span class="block text-white">AI Factory</span>
-        <span class="gradient-text">智能工厂</span>
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-        神州数码AI能力与产品全景展示
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <span class="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300">#平台能力</span>
-        <span class="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300">#产品矩阵</span>
-        <span class="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300">#解决方案</span>
-      </div>
-    </div>
-  </header>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState } = React;
 
-  <!-- Content Section - Placeholder -->
-  <section class="py-20 container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">AI Factory 核心能力</h2>
-      <p class="text-gray-400">内容待补充</p>
-    </div>
-    <div class="glass-card p-12 rounded-3xl text-center">
-      <i class="fas fa-cogs text-6xl text-blue-500 mb-6"></i>
-      <p class="text-gray-400">AI Factory 专题页内容正在构建中...</p>
-    </div>
-  </section>
+    const SVG_PATHS = {
+      Users: <g><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>,
+      Code: <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />,
+      Rocket: <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3m3.35-9.35A12.81 12.81 0 0 0 2 12c.03.12.07.24.11.35C4 17 9 20 12 20s8-3 9.89-7.65c.04-.11.08-.23.11-.35a12.81 12.81 0 0 0-8.65-8.65z" />,
+      PlayCircle: <g><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></g>,
+      Clock: <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14 12 12 12 8 12 12 12 12 18 12 12 12 12 12 12 12 12 6 12" stroke="currentColor" strokeWidth="2"/>,
+      CheckCircle: <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11l11 11 11 1" stroke="currentColor" strokeWidth="2"/>
+    };
 
-  <!-- Footer -->
-  <footer class="py-20 border-t border-white/5">
-    <div class="container mx-auto px-6 text-center">
-      <div class="flex items-center justify-center gap-3 mb-8">
-        <svg viewBox="0 0 100 100" class="w-8 h-8 opacity-50">
-          <path d="M50 5 L95 27.5 L95 72.5 L50 95 L5 72.5 L5 27.5 Z" fill="none" stroke="currentColor" stroke-width="5"/>
-          <circle cx="50" cy="50" r="15" fill="currentColor"/>
+    const Icon = ({ name, className = "", size = 24, strokeWidth = 2 }) => {
+      const path = SVG_PATHS[name];
+      if (!path) return null;
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={`${className} inline-block`} >
+          {path}
         </svg>
-        <div class="text-left leading-none">
-          <span class="text-lg font-black tracking-tight text-gray-500 uppercase">Digital China</span>
+      );
+    };
+
+    const App = () => {
+      const [activePhase, setActivePhase] = useState(0);
+      
+      const phases = [
+        {
+          title: '预备阶段',
+          subtitle: '开营前 2-3 周',
+          description: '锁定关键任务。完成用例筛选、ROI 价值评估与数据清理障碍排除。',
+          tags: ['用例锁定', '数据接入准备'],
+          icon: 'Users',
+          color: 'from-blue-600 to-cyan-600'
+        },
+        {
+          title: '破冰互动',
+          subtitle: 'Day 1',
+          description: '团队合体。设计本体层架构，完成数据接入与平台熟悉。',
+          tags: ['本体设计', 'POD 团队对齐'],
+          icon: 'Rocket',
+          color: 'from-purple-600 to-pink-600'
+        },
+        {
+          title: '场景实战',
+          subtitle: 'Day 2 - 5',
+          description: '核心环节：搭建初步原型，进行模型调优与业务逻辑深度集成。',
+          tags: ['原型构建', 'AI Agent 调优'],
+          icon: 'Code',
+          color: 'from-orange-600 to-yellow-600'
+        },
+        {
+          title: '交付验证',
+          subtitle: 'Day 6 - 7',
+          description: '部署上线。演示完整用例，进行私有化环境部署验证与复盘。',
+          tags: ['交付 Demo', '扩展方法论'],
+          icon: 'CheckCircle',
+          color: 'from-green-600 to-teal-600'
+        }
+      ];
+
+      const scenarios = [
+        {
+          title: '银行客户经理智能体',
+          description: '基于私域知识库的理财建议自动生成与合规审查。',
+          tags: ['FINANCE', '智能体'],
+          icon: 'PlayCircle',
+          color: 'from-blue-600 to-cyan-600'
+        },
+        {
+          title: '药企靶点分析智能体',
+          description: '多源文献自动摘要及潜在候选药物靶点关联性预测。',
+          tags: ['PHARMA', '研发辅助'],
+          icon: 'PlayCircle',
+          color: 'from-purple-600 to-pink-600'
+        },
+        {
+          title: '供应链韧性智能体',
+          description: '针对库存积压与缺货风险的实时 Agent 决策与自动化预警。',
+          tags: ['RETAIL', '风险管控'],
+          icon: 'PlayCircle',
+          color: 'from-orange-600 to-yellow-600'
+        }
+      ];
+
+      return (
+        <div className="min-h-screen text-slate-100 selection:bg-blue-500 selection:text-white pb-20">
+          {/* Hero Section */}
+          <header className="relative py-24 px-6 overflow-hidden border-b border-slate-800 bg-[radial-gradient(circle_at_50%_50%,rgba(30,58,138,0.2)_0%,rgba(2,6,23,1)_100%)] text-center">
+            <div className="max-w-6xl mx-auto relative z-10">
+              <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-blue-500/30 bg-blue-500/5 text-blue-400 text-sm font-bold tracking-widest animate-pulse">
+                数云原力2026·特别策划
+              </div>
+              <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter">
+                <span className="block text-white">AI Factory</span>
+                <span className="gradient-text text-6xl md:text-8xl">2.0</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-8 font-light leading-relaxed">
+                企业场景实战 Boot Camp：从"PPT 愿景"走向"7天原型部署验证"
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-800">
+                  <span className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+                  <span className="font-mono text-sm uppercase text-slate-300">100% 自有数据</span>
+                </div>
+                <div className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-800">
+                  <Icon name="Clock" className="text-teal-500" size={16} />
+                  <span className="font-mono text-sm uppercase text-slate-300">7 天实战</span>
+                </div>
+                <div className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-800">
+                  <span className="font-mono text-sm uppercase text-slate-300">0 PPT 仅代码</span>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+          </header>
+
+          {/* Section 1: 四阶段路线图 */}
+          <section className="py-24 bg-slate-950 border-y border-slate-800 px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <div className="flex items-center justify-center gap-3 mb-4 text-blue-500">
+                  <Icon name="Rocket" size={20} className="fill-current" />
+                  <span className="font-mono tracking-widest uppercase text-sm font-bold">Boot Camp Roadmap</span>
+                </div>
+                <h2 className="text-4xl font-bold italic tracking-tight uppercase mb-4 text-white">
+                  训练营四阶段路线图
+                </h2>
+                <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                  一个 POD 超级团队带领 2-3 个客户共同组建训练营，一周时间内完成 AI 用例的搭建和部署验证
+                </p>
+              </div>
+              
+              {/* Phase Timeline */}
+              <div className="relative">
+                {/* Vertical line */}
+                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 via-purple-600 to-green-600 hidden md:block"></div>
+                
+                <div className="space-y-12 md:pl-0">
+                  {phases.map((phase, idx) => (
+                    <div 
+                      key={idx} 
+                      onClick={() => setActivePhase(idx)}
+                      className={`relative md:flex items-center group ${idx < phases.length - 1 ? 'mb-8' : ''} ${idx % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
+                    >
+                      {/* Desktop: content cards */}
+                      <div className={`md:w-5/12 order-2 md:order-1 glass-card p-8 rounded-3xl text-center md:text-right ${idx % 2 === 0 ? '' : 'md:text-left'} cursor-pointer transition-all duration-500 ${activePhase === idx ? 'scale-105 border-blue-500/50' : ''}`}>
+                        <span className={`text-xs font-bold mb-2 block ${activePhase === idx ? 'text-blue-400' : 'text-slate-500'}`}>{phase.subtitle}</span>
+                        <h3 className="text-2xl font-bold text-white mb-4">{phase.title}</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed mb-6">{phase.description}</p>
+                        <div className="flex flex-wrap gap-2 md:justify-end">
+                          {phase.tags.map((tag, tIdx) => (
+                            <span key={tIdx} className="px-3 py-1 rounded-md bg-slate-800 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Desktop: icon circle */}
+                      <div className="hidden md:block z-10 bg-gradient-to-br ${phase.color} w-16 h-16 rounded-2xl flex items-center justify-center border-4 border-slate-900 order-1 md:order-2 mb-6 md:mb-0 shadow-lg transform hover:scale-110 transition-transform">
+                        <Icon name={phase.icon} className="text-white" size={24} />
+                      </div>
+                      
+                      {/* Spacer for odd items */}
+                      <div className="md:w-5/12 order-3"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2: 三大场景 */}
+          <section className="py-24 px-6 overflow-hidden relative">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <div className="flex items-center justify-center gap-3 mb-4 text-teal-500">
+                  <Icon name="PlayCircle" size={20} className="fill-current" />
+                  <span className="font-mono tracking-widest uppercase text-sm font-bold">AI Solutions</span>
+                </div>
+                <h2 className="text-4xl font-bold italic tracking-tight uppercase mb-4 text-white">
+                  营地主题策划
+                </h2>
+                <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                  以"神州问学"平台版作为标准组件，搭载"医药版"、"银行版"、"物流版"等专业能力
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {scenarios.map((scenario, idx) => (
+                  <div key={idx} className="relative group h-96 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-500 hover:border-slate-600">
+                    {/* Background glow */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${scenario.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}></div>
+                    
+                    {/* Content */}
+                    <div className="relative z-10 p-8 h-full flex flex-col">
+                      <div className={`w-16 h-16 bg-slate-900/80 backdrop-blur-md rounded-xl flex items-center justify-center mb-6 border border-slate-700 group-hover:scale-110 group-hover:bg-slate-800 transition-all`}>
+                        <Icon name={scenario.icon} className="text-teal-400" size={32} />
+                      </div>
+                      
+                      <h3 className="text-2xl font-bold mb-4 text-white">{scenario.title}</h3>
+                      <div className="flex gap-2 mb-4">
+                        {scenario.tags.map((tag, tIdx) => (
+                          <span key={tIdx} className="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[10px] font-bold uppercase tracking-wider border border-slate-700">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <p className="text-slate-400 text-sm leading-relaxed flex-grow">
+                        {scenario.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="py-20 px-6 text-center border-t border-slate-800 bg-slate-950/50">
+            <h3 className="text-2xl font-bold mb-6 italic uppercase tracking-widest text-slate-300">AI Factory 2.0</h3>
+            <p className="text-slate-500 mb-10 max-w-xl mx-auto text-sm font-light leading-relaxed">
+              拒绝漫长的咨询周期，用 7 天时间在神州数码 POD 团队的配合下完成实战。技能内化，自主扩展。
+            </p>
+            
+            {/* CTA Button */}
+            <div className="inline-flex items-center gap-4 p-1 bg-white/5 border border-white/10 rounded-full mb-10">
+              <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-sm transition hover:bg-blue-500 hover:text-white">
+                立即加入
+              </button>
+              <span className="text-sm text-slate-400">数云原力 2026 特别策划</span>
+            </div>
+            
+            <div className="text-slate-600 text-[10px] font-mono uppercase tracking-[0.3em]">
+              © 2026 DIGITAL CHINA | EMPOWER THE FUTURE WITH AI原力
+            </div>
+          </footer>
         </div>
-      </div>
-      <p class="text-gray-600 text-sm mb-8 italic">"汇聚数云融合的力量，驱动智能时代的跨越"</p>
-      <p class="text-gray-700 text-[10px] tracking-widest uppercase">© DC MOTIVATION 2026 | 神州数码集团股份有限公司 版权所有</p>
-    </div>
-  </footer>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
